@@ -1,1 +1,2 @@
-# Task_2 EPAM Front-End external courses JavaScript Task1
+# Task_2
+EPAM Front-End external courses JavaScript Task1
