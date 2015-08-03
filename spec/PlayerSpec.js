@@ -1,42 +1,71 @@
 describe("EPAM Front-End external courses JavaScript Task 2", function() {
 
-    it("2.1 function - ucFirst(str) return first letter of the word capital:",function(){
-
+    it("2.1 function - ucFirst(str) return first letter of the word capital" +
+        "if str = '' return '':",function(){
+        expect(App.ucFirst("string")).toBe("String");
+        expect(App.ucFirst("")).toBe("");
     });
 
-
-    it("2.2 function - checkSpam(str) return's true if str contain's 'viagra', 'prn', 'XXX'",function(){
-
+    it("2.2 function - checkSpam(str) return's true if str contain's 'viagra', 'prn', 'XXX':",function(){
+        expect(App.checkSpam("")).toBeTruthy();
+        expect(App.checkSpam("Some string")).toBeTruthy();
+        expect(App.checkSpam("XXx")).toBeFalsy();
+        expect(App.checkSpam("some string prn")).toBeFalsy();
+        expect(App.checkSpam("someViagra string")).toBeFalsy();
+        expect(App.checkSpam("XXXViagra prn string")).toBeFalsy();
     });
 
     it("2.3 function - truncate(str , maxlength) if str longer than amxlength replace end of a str to '...'",function(){
-
+        expect(App.truncate("Some string with smth",4)).toBe("Some...");
+        expect(App.truncate("Some string with smth",0)).toBe("...");
+        expect(App.truncate("Some",4)).toBe("Some");
+        expect(App.truncate("Some",14)).toBe("Some");
     });
 
     it("2.4 function - random(min, max) return random integer from interval [ min, max ]",function(){
-
+        var arr = App.random(-1,1);
+        expect(arr.indexOf(-2) !== -1).toBeFalsy();
+        expect(arr.indexOf(-1) !== -1).toBeTruthy();
+        expect(arr.indexOf(0) !== -1).toBeTruthy();
+        expect(arr.indexOf(1) !== -1).toBeTruthy();
+        expect(arr.length === 3).toBeTruthy();
     });
 
     describe("2.5 object - manipulation",function(){
 
         it("2.5.1 Create empty object:",function(){
-
+            var user = Object.create(null);
+            expect(user.toString === undefined).toBeTruthy();
         });
 
         it("2.5.2 Add property name with value 'Vasia':",function(){
-
+            var user = Object.create(null);
+            user.name = "Vasia";
+            expect(user.name === "Vasia").toBeTruthy();
         });
 
         it("2.5.3 Add property sername with value 'Petrov':",function(){
-
+            var user = Object.create(null);
+            user.name = "Vasia";
+            user.surname = "Petrov";
+            expect(user.surname === "Petrov").toBeTruthy();
         });
 
         it("2.5.4 Change property name to 'Sergei':",function(){
-
+            var user = Object.create(null);
+            user.name = "Vasia";
+            user.surname = "Petrov";
+            user.name = "Sergei";
+            expect(user.name === "Sergei").toBeTruthy();
         });
 
         it("2.5.5 Delete property name from object:",function(){
-
+            var user = Object.create(null);
+            user.name = "Vasia";
+            user.surname = "Petrov";
+            user.name = "Sergei";
+            delete user.name;
+            expect(user.name === undefined).toBeTruthy();
         });
     });
 
