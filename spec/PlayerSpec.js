@@ -70,21 +70,41 @@ describe("EPAM Front-End external courses JavaScript Task 2", function() {
     });
 
     it("2.6 function - multyplyNumeric(n) gets object and multiply all numeric properties by 2:",function(){
+        var obj = App.multiplyNumeric({
+            a: "a",
+            b: 1,
+            c: 2.3,
+            f: function () {
+            },
+            o: {
+                in: 1
+            }
+        });
 
+        expect(obj.a).toBe("a");
+        expect(obj.b).toBe(2);
+        expect(obj.c).toBe(4.6);
+        expect(typeof obj.f).toBe("function");
+        expect(obj.o.in).toBe(2);
     });
 
     describe("2.7 object - calculator",function(){
+        var calc = App.calculator();
 
         it("2.7.1 method - readValues() get from prompt() two values and retain both to properties:",function(){
-
+            //calc.readValues();
+            calc.a = 1;
+            calc.b = 5;
+            expect(calc.a).toBe(1);
+            expect(calc.b).toBe(5);
         });
 
         it("2.7.2 method - sum() return sum of two properties:",function(){
-
+            expect(calc.sum()).toBe(6);
         });
 
         it("2.7.3 method - mul() return result of multiplication of two properties:",function(){
-
+            expect(calc.mul()).toBe(5);
         });
     });
 
